@@ -1,0 +1,47 @@
+
+<div class="main">
+  <input type="checkbox" id="chk" aria-hidden="true">
+
+  <div class="signup">
+    <form>
+      <label for="chk" aria-hidden="true">Sign up</label>
+
+      <div class="user-type-buttons">
+        <button *ngIf="!selectedUserType" (click)="selectUserType('normal')">Normal User</button>
+        <button *ngIf="!selectedUserType" (click)="selectUserType('organizer')">Organizer</button>
+      </div>
+
+      <div *ngIf="selectedUserType === 'normal'" class="normal-user-fields">
+        <input type="text" name="txt" placeholder="Username"  [(ngModel)]="signupNormalObj.userName" >
+        <input type="email" name="email" placeholder="Email"  [(ngModel)]="signupNormalObj.email" >
+        <input type="password" name="pswd" placeholder="Password"  [(ngModel)]="signupNormalObj.password" >
+        <button (click)="signUp()">Sign up</button>
+        <button (click)="selectUserType('organizer')">change to organizer</button>
+      </div>
+
+      <div *ngIf="selectedUserType === 'organizer'" class="organizer-fields">
+        <input type="text" name="txt" placeholder="Username"  [(ngModel)]="signupOrganizerObj.userName" >
+        <input type="email" name="email" placeholder="Email"  [(ngModel)]="signupOrganizerObj.email" >
+        <input type="password" name="pswd" placeholder="Password"  [(ngModel)]="signupOrganizerObj.password" >
+        <input type="text" name="address" placeholder="Address"  [(ngModel)]="signupOrganizerObj.address" >
+        <input type="date" name="dateOfEvent" placeholder="Date of Event"  [(ngModel)]="signupOrganizerObj.dateOfEvent" >
+        <input type="text" name="organizationLocation" placeholder="Location of the organization"  [(ngModel)]="signupOrganizerObj.organizationLocation" >
+        <button (click)="signUp()">Sign up</button>
+        <button (click)="selectUserType('normal')">change to user</button>
+      </div>
+
+
+    </form>
+  </div>
+
+  <div class="login">
+    <form>
+      <label for="chk" aria-hidden="true">Login</label>
+      <input type="text" name="email" placeholder="username"  [(ngModel)]="loginObj.userName">
+      <input type="password" name="pswd" placeholder="Password"  [(ngModel)]="loginObj.password">
+      <button (click)="logIn()">Login</button>
+    </form>
+  </div>
+</div>
+
+
